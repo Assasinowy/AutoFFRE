@@ -22,11 +22,11 @@ namespace FFonRoundEnd
         public override string Author => "Assasinowy G";
 
         public override PluginPriority Priority => PluginPriority.High;
-        public override Version RequiredExiledVersion => this.RequiredExiledVersion;
+        public override Version RequiredExiledVersion => new Version(9,7,1);
 
         public override void OnDisabled()
         {
-            throw new NotImplementedException();
+            Exiled.Events.Handlers.Server.EndingRound -= OnEndingRound;
         }
 
         public override void OnEnabled()
@@ -36,11 +36,6 @@ namespace FFonRoundEnd
         public void OnEndingRound(EndingRoundEventArgs ev)
         {
             Server.FriendlyFire = true;
-        }
-
-        public override void OnReloaded()
-        {
-            throw new NotImplementedException();
         }
     }
 }
