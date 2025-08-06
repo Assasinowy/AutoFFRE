@@ -20,7 +20,7 @@ namespace FFonRoundEnd
         public override string Prefix => "AutoFFRE";
 
         public override string Author => "Assasinowy G";
-
+        public override Version Version => new Version(1,0,1);
         public override PluginPriority Priority => PluginPriority.High;
         public override Version RequiredExiledVersion => new Version(9,7,1);
 
