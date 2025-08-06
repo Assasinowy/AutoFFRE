@@ -23,19 +23,24 @@ namespace FFonRoundEnd
         public override Version Version => new Version(1,0,1);
         public override PluginPriority Priority => PluginPriority.High;
         public override Version RequiredExiledVersion => new Version(9,7,1);
-
         public override void OnDisabled()
         {
             Exiled.Events.Handlers.Server.EndingRound -= OnEndingRound;
+            Exiled.Events.Handlers.Server.RoundEnded -= OnRoundEnded;
         }
 
         public override void OnEnabled()
         {
             Exiled.Events.Handlers.Server.EndingRound += OnEndingRound;
+            Exiled.Events.Handlers.Server.RoundEnded += OnRoundEnded;
         }
         public void OnEndingRound(EndingRoundEventArgs ev)
         {
             Server.FriendlyFire = true;
+        }
+        public void OnRoundEnded(RoundEndedEventArgs ev)
+        {
+            Server.FriendlyFire = false;
         }
     }
 }
